@@ -1,0 +1,19 @@
+img.active {
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	background-color: #2B2B49;
+}
+
+#select_level > img.active {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 10px;
+	padding-bottom: 22px;
+	margin-left: -12px;
+	margin-top: -10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	background-color: rgba(43, 43, 73, 0.6);
+}
