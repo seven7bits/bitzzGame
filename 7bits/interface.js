@@ -1,7 +1,5 @@
 {
-	"base" : {
-		"method": SevenBitsKeyPress
-	},
+	"method": "SevenBitsKeyPress",
 
 	"0": {
 
@@ -29,19 +27,19 @@
 			"args": ["start"]
 		},
 
-		"A": {
+		"a": {
 			"args": ["a"]
 		},
 
-		"B": {
+		"b": {
 			"args": ["notImplementedKey"]
 		},
 
-		"AA": {
+		"aa": {
 			"args": ["notImplementedKey"]
 		},
 
-		"BB": {
+		"bb": {
 			"args": ["notImplementedKey"]
 		}
 	}
