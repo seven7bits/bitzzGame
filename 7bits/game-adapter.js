@@ -25,17 +25,19 @@ $(function() {
 	var cancelAction = function(options) {
 		backMenu2.click();
 	};
+});
 
+$(function() {
 	me.input.isKeyPressed = function(key) {
 		switch (key) {
-			case 'jump':
-				return SevenBits.getUpKeyState();
-			case 'left':
-				return SevenBits.getLeftKeyState();
-			case 'right':
-				return SevenBits.getRightKeyState();
 			case 'down':
-				return SevenBits.getDownKeyState();
+				return SevenBits.getKeyState('c');
+			case 'jump':
+				return SevenBits.getKeyState('x');
+			case 'left':
+				return SevenBits.getKeyState('left_arrow');
+			case 'right':
+				return SevenBits.getKeyState('right_arrow');
 		}
 	};
 });

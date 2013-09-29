@@ -3,115 +3,71 @@ var SevenBits = SevenBits || {};
 (function(){
 	'use strict';
 
-	var baseElement = $(document);
-
-	var keyStateGenerator = function(keyCode, state) {
-		return $.Event(state, { which: keyCode });
-	}
-
-	var upKeyEvent = function(state) { return keyStateGenerator(38, state); }
-	var downKeyEvent = function(state) { return keyStateGenerator(40, state); }
-	var leftKeyEvent = function(state) { return keyStateGenerator(37, state); }
-	var rightKeyEvent = function(state) { return keyStateGenerator(39, state); }
-
-	var escapeKeyEvent = function(state) { return keyStateGenerator(27, state); }
-	var enterKeyEvent = function(state) { return keyStateGenerator(13, state); }
-	var aKeyEvent = function(state) { return keyStateGenerator(65, state); }
-
-	var isUpKeyPressed = false;
-	var isDownKeyPressed = false;
-	var isLeftKeyPressed = false;
-	var isRightKeyPressed = false;
-	// var isEscapeKeyPressed = false;
-	// var isEnterKeyPressed = false;
-	// var isAKeyPressed = false;
-
-	SevenBits.setUpKeyState = function(isPressed) {
-		if (isPressed) {
-			baseElement.trigger(upKeyEvent("keydown"));
-			isUpKeyPressed = true;
-		} else {
-			baseElement.trigger(upKeyEvent("keyup"));
-			isUpKeyPressed = false;
-		}		
+	var keys = {
+		'backspace': 	{ code: 8, isPressed: false},
+		'tab': 			{ code: 9, isPressed: false},
+		'enter': 		{ code: 13, isPressed: false},
+		'escape':		{ code: 27, isPressed: false},
+		'end':			{ code: 35, isPressed: false},
+		'home':			{ code: 36, isPressed: false},
+		'left_arrow':	{ code: 37, isPressed: false},
+		'up_arrow':	 	{ code: 38, isPressed: false},
+		'right_arrow':	{ code: 39, isPressed: false},
+		'down_arrow': 	{ code: 40, isPressed: false},
+		'0':			{ code: 48, isPressed: false},
+		'1':			{ code: 49, isPressed: false},
+		'2':			{ code: 50, isPressed: false},
+		'3':			{ code: 51, isPressed: false},
+		'4':			{ code: 52, isPressed: false},
+		'5':			{ code: 53, isPressed: false},
+		'6':			{ code: 54, isPressed: false},
+		'7':			{ code: 55, isPressed: false},
+		'8':			{ code: 56, isPressed: false},
+		'9':			{ code: 57, isPressed: false},
+		'a':			{ code: 65, isPressed: false},
+		'b':			{ code: 66, isPressed: false},
+		'c':			{ code: 67, isPressed: false},
+		'd':			{ code: 68, isPressed: false},
+		'e':			{ code: 69, isPressed: false},
+		'f':			{ code: 70, isPressed: false},
+		'g':			{ code: 71, isPressed: false},
+		'h':			{ code: 72, isPressed: false},
+		'i':			{ code: 73, isPressed: false},
+		'j':			{ code: 74, isPressed: false},
+		'k':			{ code: 75, isPressed: false},
+		'l':			{ code: 76, isPressed: false},
+		'm':			{ code: 77, isPressed: false},
+		'n':			{ code: 78, isPressed: false},
+		'o':			{ code: 79, isPressed: false},
+		'p':			{ code: 80, isPressed: false},
+		'q':			{ code: 81, isPressed: false},
+		'r':			{ code: 82, isPressed: false},
+		's':			{ code: 83, isPressed: false},
+		't':			{ code: 84, isPressed: false},
+		'u':			{ code: 85, isPressed: false},
+		'v':			{ code: 86, isPressed: false},
+		'w':			{ code: 87, isPressed: false},
+		'x':			{ code: 88, isPressed: false},
+		'y':			{ code: 89, isPressed: false},
+		'z':			{ code: 90, isPressed: false}
 	};
 
-	SevenBits.getUpKeyState = function() {
-		return isUpKeyPressed;
-	};
+	var keyEvent = function(state, keyCode) { return $.Event(state, { which: keyCode }); }
 
-	SevenBits.setDownKeyState = function(isPressed) {
+	SevenBits.setKeyState = function(keyName, isPressed) {
 		if (isPressed) {
-			baseElement.trigger(downKeyEvent("keydown"));
-			isDownKeyPressed = true;
+			console.log(keys[keyName].code);
+			$(document).trigger(keyEvent("keydown", keys[keyName].code));
+			keys[keyName].isPressed = true;
 		} else {
-			baseElement.trigger(downKeyEvent("keyup"));
-			isDownKeyPressed = false;
+			$(document).trigger(keyEvent("keyup", keys[keyName].code));
+			keys[keyName].isPressed = false;
 		}
 	};
 
-	SevenBits.getDownKeyState = function() {
-		return isDownKeyPressed;
-	}
-
-	SevenBits.setLeftKeyState = function(isPressed) {
-		if (isPressed) {
-			baseElement.trigger(leftKeyEvent("keydown"));
-			isLeftKeyPressed = true;
-		} else {
-			baseElement.trigger(leftKeyEvent("keyup"));
-			isLeftKeyPressed = false;
-		}
+	SevenBits.getKeyState = function(keyName) {
+		return keys[keyName].isPressed;
 	};
-
-	SevenBits.getLeftKeyState = function() {
-		return isLeftKeyPressed;
-	};
-
-	SevenBits.setRightKeyState = function(isPressed) {
-		if (isPressed) {
-			baseElement.trigger(rightKeyEvent("keydown"));
-			isRightKeyPressed = true;
-		} else {
-			baseElement.trigger(rightKeyEvent("keyup"));
-			isRightKeyPressed = false;
-		}
-	};
-
-	SevenBits.getRightKeyState = function() {
-		return isRightKeyPressed;
-	};
-
-	SevenBits.setEscapeKeyState = function(isPressed) {
-		if (isPressed) {
-			baseElement.trigger(escapeKeyEvent("keydown"));
-			// isEnterKeyPressed = true;
-		} else {
-			baseElement.trigger(escapeKeyEvent("keyup"));
-			// isEnterKeyPressed = false;
-		}
-	};
-
-	SevenBits.setEnterKeyState = function(isPressed) {
-		if (isPressed) {
-			baseElement.trigger(enterKeyEvent("keydown"));
-			// isEnterKeyPressed = true;
-		} else {
-			baseElement.trigger(enterKeyEvent("keyup"));
-			// isEnterKeyPressed = false;
-		}
-	};
-
-	SevenBits.setAKeyState = function(isPressed) {
-		if (isPressed) {
-			baseElement.trigger(aKeyEvent("keydown"));
-			// isAKeyPressed = true;
-		} else {
-			baseElement.trigger(aKeyEvent("keyup"));
-			// isAKeyPressed = false;
-		}
-	};
-
 }());
 
 var SevenBitsKeyPress = function(keyName, state) {
@@ -121,25 +77,25 @@ var SevenBitsKeyPress = function(keyName, state) {
 
 	switch (keyName) {
 		case 'left':
-			SevenBits.setLeftKeyState( pressKey );
+			SevenBits.setKeyState('left_arrow', pressKey);
 			break;
 		case 'right':
-			SevenBits.setRightKeyState( pressKey );
-			break;
-		case 'up':
-			SevenBits.setUpKeyState( pressKey );
-			break;
-		case 'down':
-			SevenBits.setDownKeyState( pressKey );
-			break;
-		case 'start':
-			SevenBits.setEscapeKeyState( pressKey );
-			break;
-		case 'select':
-			SevenBits.setEnterKeyState( pressKey );
+			SevenBits.setKeyState('right_arrow', pressKey);
 			break;
 		case 'a':
-			SevenBits.setAKeyState( pressKey );
+			SevenBits.setKeyState('x', pressKey);
+			break;
+		case 'b':
+			SevenBits.setKeyState('c', pressKey);
+			break;
+		case 'aa':
+			SevenBits.setKeyState('a', pressKey);
+			break;
+		case 'select':
+			SevenBits.setKeyState('enter', pressKey);
+			break;
+		case 'start':
+			SevenBits.setKeyState('escape', pressKey);
 			break;
 	}
 };
