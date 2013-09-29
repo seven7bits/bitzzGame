@@ -12,11 +12,11 @@
 		},
 
 		"up": {
-			"args": ["up"]
+			"args": ["notImplementedKey"]
 		},
 
 		"down": {
-			"args": ["down"]
+			"args": ["notImplementedKey"]
 		},
 
 		"select": {
@@ -32,11 +32,11 @@
 		},
 
 		"b": {
-			"args": ["notImplementedKey"]
+			"args": ["b"]
 		},
 
 		"aa": {
-			"args": ["notImplementedKey"]
+			"args": ["aa"]
 		},
 
 		"bb": {
